@@ -18,10 +18,6 @@ public class BasePage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-//    protected WebElement waitForVisibility(WebElement element) {
-//        return wait.until(ExpectedConditions.visibilityOf(element));
-//    }
-
     protected WebElement waitForVisibility(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
