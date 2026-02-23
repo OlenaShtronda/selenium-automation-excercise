@@ -4,8 +4,6 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.testng.AllureTestNg;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.github.javafaker.Faker;
@@ -14,7 +12,6 @@ import com.github.javafaker.Faker;
 @Epic("Authentication")
 @Feature("Registration")
 public class RegistrationTests {
-    private static final Logger log = LoggerFactory.getLogger(RegistrationTests.class);
     final DriverWrapper driverWrapper = new DriverWrapper();
 
     @BeforeMethod
@@ -30,7 +27,7 @@ public class RegistrationTests {
 
     @Story("Valid registration")
     @Test(description = "User should be able to register with valid credentials")
-    void verifyUserCanRegister() throws InterruptedException {
+    void verifyUserCanRegister() {
         Faker faker = new Faker();
 
         String name = faker.name().firstName();

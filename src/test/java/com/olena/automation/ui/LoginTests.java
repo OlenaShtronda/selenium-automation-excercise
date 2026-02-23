@@ -1,8 +1,6 @@
 package com.olena.automation.ui;
 
 import io.qameta.allure.testng.AllureTestNg;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import io.qameta.allure.*;
@@ -11,7 +9,6 @@ import io.qameta.allure.*;
 @Epic("Authentication")
 @Feature("Login")
 public class LoginTests {
-    private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
     final DriverWrapper driverWrapper = new DriverWrapper();
 
     @BeforeMethod
