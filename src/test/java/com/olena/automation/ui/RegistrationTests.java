@@ -11,19 +11,7 @@ import com.github.javafaker.Faker;
 @Listeners({AllureTestNg.class})
 @Epic("Authentication")
 @Feature("Registration")
-public class RegistrationTests {
-    final DriverWrapper driverWrapper = new DriverWrapper();
-
-    @BeforeMethod
-    void setUp() {
-        driverWrapper.init();
-        driverWrapper.getDriver().get("https://automationexercise.com");
-    }
-
-    @AfterMethod
-    void tearDown() {
-        driverWrapper.tearDown();
-    }
+public class RegistrationTests extends BaseTest {
 
     @Story("Valid registration")
     @Test(description = "User should be able to register with valid credentials")
@@ -33,16 +21,16 @@ public class RegistrationTests {
         String name = faker.name().firstName();
         String email = faker.internet().emailAddress();
 
-        HomePage homePage = new HomePage(driverWrapper.getDriver());
+        HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.verifyHomePageIsVisible(), "Home page is not visible");
         homePage.clickSignupLogin();
 
-        LoginPage loginPage = new LoginPage(driverWrapper.getDriver());
+        LoginPage loginPage = new LoginPage(driver);
         Assert.assertTrue(loginPage.verifyNewUserSignupHeadingIsVisible(), "'New User Signup!' heading is not visible");
         loginPage.fillSignUpForm(name, email);
         loginPage.clickSignupBtn();
 
-        SignupPage signupPage = new SignupPage(driverWrapper.getDriver());
+        SignupPage signupPage = new SignupPage(driver);
         Assert.assertTrue(signupPage.verifyEnterAccountInformationHeadingIsVisible(), "'ENTER ACCOUNT INFORMATION' heading is not visible");
         signupPage.selectTitle("Mrs");
         signupPage.enterPassword("TestPassword123");
@@ -66,14 +54,14 @@ public class RegistrationTests {
 
         signupPage.clickCreateAccount();
 
-        AccountCreatedPage accountCreatedPage = new AccountCreatedPage(driverWrapper.getDriver());
+        AccountCreatedPage accountCreatedPage = new AccountCreatedPage(driver);
         Assert.assertTrue(accountCreatedPage.verifyAccountCreatedHeadingIsVisible(), "'ACCOUNT CREATED!' is not visible");
         accountCreatedPage.clickContinue();
 
         Assert.assertTrue(homePage.verifyUserIsLoggedIn(name), "'Logged in as username' is not visible");
         homePage.clickDeleteAccountBtn();
 
-        AccountDeletedPage accountDeletedPage = new AccountDeletedPage(driverWrapper.getDriver());
+        AccountDeletedPage accountDeletedPage = new AccountDeletedPage(driver);
         Assert.assertTrue(accountDeletedPage.verifyAccountDeletedHeadingIsVisible(), "'ACCOUNT DELETED!' is not visible");
         accountDeletedPage.clickContinue();
     }

@@ -8,28 +8,16 @@ import io.qameta.allure.*;
 @Listeners({AllureTestNg.class})
 @Epic("Authentication")
 @Feature("Login")
-public class LoginTests {
-    final DriverWrapper driverWrapper = new DriverWrapper();
-
-    @BeforeMethod
-    void setUp() {
-        driverWrapper.init();
-        driverWrapper.getDriver().get("https://automationexercise.com");
-    }
-
-    @AfterMethod
-    void tearDown() {
-        driverWrapper.tearDown();
-    }
+public class LoginTests extends BaseTest {
 
     @Story("Valid login")
     @Test(description = "User should login with valid credentials")
     void shouldLoginWithValidCredentials() {
-        HomePage homePage = new HomePage(driverWrapper.getDriver());
+        HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.verifyHomePageIsVisible(), "Home page is not visible");
         homePage.clickSignupLogin();
 
-        LoginPage loginPage = new LoginPage(driverWrapper.getDriver());
+        LoginPage loginPage = new LoginPage(driver);
         Assert.assertTrue(loginPage.verifyLoginToYourAccountHeadingIsVisible(), "'Login to your account' heading is not visible");
 
         String loginEmail = "emailtotest@mail.com";
@@ -45,11 +33,11 @@ public class LoginTests {
     @Story("Invalid email")
     @Test(description = "User should not login with incorrect email")
     void shouldRejectLoginWithIncorrectEmail() {
-        HomePage homePage = new HomePage(driverWrapper.getDriver());
+        HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.verifyHomePageIsVisible(), "Home page is not visible");
         homePage.clickSignupLogin();
 
-        LoginPage loginPage = new LoginPage(driverWrapper.getDriver());
+        LoginPage loginPage = new LoginPage(driver);
         Assert.assertTrue(loginPage.verifyLoginToYourAccountHeadingIsVisible(), "'Login to your account' heading is not visible");
 
         String incorrectLoginEmail = "gmailtotest@mail.com";
@@ -64,11 +52,11 @@ public class LoginTests {
     @Story("Invalid password")
     @Test(description = "User should not login with incorrect password")
     void shouldRejectLoginWithIncorrectPassword() {
-        HomePage homePage = new HomePage(driverWrapper.getDriver());
+        HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.verifyHomePageIsVisible(), "Home page is not visible");
         homePage.clickSignupLogin();
 
-        LoginPage loginPage = new LoginPage(driverWrapper.getDriver());
+        LoginPage loginPage = new LoginPage(driver);
         Assert.assertTrue(loginPage.verifyLoginToYourAccountHeadingIsVisible(), "'Login to your account' heading is not visible");
 
         String loginEmail = "emailtotest@mail.com";
@@ -83,11 +71,11 @@ public class LoginTests {
     @Story("Empty fields")
     @Test(description = "User should not login with empty fields")
     void shouldRejectLoginWithEmptyFields() {
-        HomePage homePage = new HomePage(driverWrapper.getDriver());
+        HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.verifyHomePageIsVisible(), "Home page is not visible");
         homePage.clickSignupLogin();
 
-        LoginPage loginPage = new LoginPage(driverWrapper.getDriver());
+        LoginPage loginPage = new LoginPage(driver);
         Assert.assertTrue(loginPage.verifyLoginToYourAccountHeadingIsVisible(), "'Login to your account' heading is not visible");
         loginPage.clearLoginForm();
         loginPage.clickLoginBtn();
