@@ -1,0 +1,8 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"0","Authentication","0","Login","0","1","Invalid email","0"
+"0","Authentication","0","Login","0","1","Valid login","0"
+"0","Authentication","0","Registration","0","1","Valid registration","0"
+"0","Authentication","0","Login","0","1","Empty fields","0"
+"0","Authentication","0","Login","0","1","Invalid password","0"
+"1","Authentication","0","Login","0","0","","0"
+"1","Authentication","0","Registration","0","0","","0"
