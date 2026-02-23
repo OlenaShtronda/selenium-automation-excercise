@@ -26,6 +26,11 @@ public class DriverWrapper {
         prefs.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", prefs);
 
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1920,1080");
+
         driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
