@@ -3,6 +3,9 @@
 UI test automation project for authentication flows (registration and login) on https://automationexercise.com.
 
 The project demonstrates Page Object Model design, TestNG test structure, Allure reporting, and CI execution in headless Chrome.
+**Live Allure Report (GitHub Pages):**  
+https://olenashtronda.github.io/selenium-automation-excercise/
+
 ## Tech Stack
 - Java 25
 - Selenium WebDriver
